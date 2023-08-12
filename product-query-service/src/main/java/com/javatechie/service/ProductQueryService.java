@@ -31,6 +31,7 @@ public class ProductQueryService {
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
             existingProduct.setDescription(product.getDescription());
+            existingProduct.setLastUpdated(product.getLastUpdated());
             repository.save(existingProduct);
         }
     }

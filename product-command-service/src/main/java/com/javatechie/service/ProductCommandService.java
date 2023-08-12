@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class ProductCommandService {
 
@@ -29,6 +31,7 @@ public class ProductCommandService {
         existingProduct.setName(newProduct.getName());
         existingProduct.setPrice(newProduct.getPrice());
         existingProduct.setDescription(newProduct.getDescription());
+        existingProduct.setLastUpdated(LocalDateTime.now());
         Product productDO = repository.save(existingProduct);
         ProductEvent event=new ProductEvent("UpdateProduct", productDO);
         kafkaTemplate.send("product-event-topic", event);
