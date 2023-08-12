@@ -29,4 +29,3 @@ curl --location --request PUT 'http://localhost:9191/products/1' \
     }
 }'
 ```
-# CQRS
